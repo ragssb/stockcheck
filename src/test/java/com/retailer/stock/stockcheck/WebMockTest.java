@@ -99,6 +99,23 @@ public class WebMockTest {
 				.andExpect(jsonPath("$.productName").isNotEmpty());
 	}
 	
+	@Test
+	public void setReorderLevelForProductShouldSetReorderLevel() throws Exception {
+		StockAdvice sa = addStockAdvice(1, "Mobile");
+		sa.setReorderLevel(20);
+		StockAdvice input = new StockAdvice();
+		input.setProductName(sa.getProductName());
+		input.setAdditionalVolumeToOrder(sa.getReorderLevel());
+		when(service.setReorderLevelForProduct(any(String.class), any(Integer.class))).thenReturn(sa);
+		this.mockMvc.perform(post("/stockcheck/setReorderLevelForProduct")
+				.content(asJsonString(input))
+				.characterEncoding("utf-8")
+				.contentType(MediaType.APPLICATION_JSON))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$.productName").isNotEmpty());
+	}
+	
 	private List<StockAdvice> addStockAdviceList()
 	{
 		List<StockAdvice> sal = new ArrayList<>();
