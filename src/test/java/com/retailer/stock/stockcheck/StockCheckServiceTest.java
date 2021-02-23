@@ -1,7 +1,6 @@
 package com.retailer.stock.stockcheck;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -40,6 +39,9 @@ public class StockCheckServiceTest {
   @MockBean
   private StockCheckAuditRepository stockCheckAuditRepository;
 
+  /**
+   * Set up test data and assumptions.
+   */
   public void setUp()  {
 	  List<Products> list = new ArrayList<>();
       Products p1 = new Products(1, "A");
@@ -75,6 +77,9 @@ public class StockCheckServiceTest {
 
   }
 
+  /**
+   * Test to CheckForAllProducts method.
+   */
   @Test
   public void testStockCheckForAllProductsShouldSucceed(){
 	  setUp();
@@ -83,6 +88,9 @@ public class StockCheckServiceTest {
       Assert.assertEquals(3, returnList.size());
   }
   
+  /**
+   * Test stockCheckByProduct method.
+   */
   @Test
   public void testStockCheckByProductShouldSucceed(){
 	  setUp();
@@ -91,6 +99,9 @@ public class StockCheckServiceTest {
       Assert.assertEquals(returnVal.getProductName(), "A");
   }
   
+  /**
+   * Test stockCheckForProductsToOrder method.
+   */
   @Test
   public void testStockCheckForProductsToOrderShouldSucceed(){
 	  setUp();
@@ -99,6 +110,9 @@ public class StockCheckServiceTest {
       Assert.assertEquals(2, returnList.size());
   }
   
+  /**
+   * Test blockProduct method.
+   */
   @Test
   public void testBlockProductShouldSucceed(){
 	  setUp();
@@ -108,6 +122,9 @@ public class StockCheckServiceTest {
       Assert.assertEquals(returnVal.isBlocked(), true);
   }
   
+  /**
+   * Test SetAdditionalVolumeForProduct method.
+   */
   @Test
   public void testSetAdditionalVolumeForProductShouldSucceed(){
 	  setUp();
@@ -118,6 +135,9 @@ public class StockCheckServiceTest {
       Assert.assertEquals(returnVal.getAdditionalVolumeToOrder(), 20);
   }
   
+  /**
+   * Test SetReorderLevelForProduct method.
+   */
   @Test
   public void testSetReorderLevelForProductShouldSucceed(){
 	  setUp();

@@ -1,21 +1,33 @@
 package com.retailer.stock.stockcheck.model;
 
+/**
+ * Stock Advice return object. 
+ *
+ */
 public class StockAdvice {
 	
+	/** The product Id. */ 
 	private Integer productId;
 	
+	/** The product Name. */
 	private String productName;
 	
+	/** The current stock of the product. */
 	private int stockQuantity;
 	
+	/** The minimum stock for the product. */
 	private int reorderLevel;
 	
+	/** The quantity on order which is active. */
 	private int quantityOnOrder;
 	
+	/** The recommended quantity to be ordered. */
 	private int quantityToOrder;
 	
+	/** The additional volume that needs to be ordered. */
 	private int additionalVolumeToOrder;	
 	
+	/** Marks a product as blocked. */
 	private boolean isBlocked;
 
 	public StockAdvice() {
