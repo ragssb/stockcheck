@@ -35,4 +35,4 @@ Data is persisted to the database, the H2 database is accessible in the URL http
 The Optional requirement to store the audit data of the output of stock-check and recommended purchase history is 
 persisted to the database and can viewed from the H2 console. Db tables : stock_check_audit and recommended_purchase_history. 
 
-The H2 database will be Torn down when the JVM exits.
+The H2 database will be reset when the JVM exits.
