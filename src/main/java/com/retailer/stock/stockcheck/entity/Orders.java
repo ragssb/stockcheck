@@ -25,7 +25,7 @@ public class Orders {
 	
 	@Basic
 	@Temporal(TemporalType.DATE)
-	@Column(name="from_date")
+	@Column(name="order_date")
 	private Date orderDate;
 	
 	@ManyToOne
@@ -34,6 +34,9 @@ public class Orders {
 	
 	@Column(name="order_quantity")
 	private int orderQuantity;
+	
+	@Column(name="is_active")
+	private boolean isActive;
 
 	public Orders() {
 	}
@@ -68,6 +71,14 @@ public class Orders {
 
 	public void setOrderQuantity(final int orderQuantity) {
 		this.orderQuantity = orderQuantity;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(final boolean isActive) {
+		this.isActive = isActive;
 	}
 	
 	

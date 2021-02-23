@@ -26,6 +26,9 @@ public class Products {
 	@OneToMany(mappedBy = "product")
 	private List<Inventory> inventory = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "product")
+	private List<Orders> orders = new ArrayList<>();
+	
 	public Products() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -62,6 +65,12 @@ public class Products {
 		this.name = name;
 	}
 
-	
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(final List<Orders> orders) {
+		this.orders = orders;
+	}	
 
 }

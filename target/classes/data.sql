@@ -3,10 +3,6 @@ DROP TABLE IF EXISTS stock_check_audit;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS inventory;
 DROP TABLE IF EXISTS products;
---DROP TABLE IF EXISTS order_advice;
---DROP SEQUENCE IF EXISTS adviceidseq;
-
---CREATE SEQUENCE adviceidseq start with 5;
  
 CREATE TABLE products (
   product_id INT AUTO_INCREMENT  PRIMARY KEY,
@@ -46,10 +42,11 @@ INSERT INTO products(product_name) VALUES
   	order_date date default sysdate, 
   	product_id int not null,
   	order_quantity int not null,
+  	is_active boolean default true,
   	foreign key (product_id) references products(product_id)
   );
   
-  insert into orders (order_date, product_id, order_quantity) values(sysdate, 4, 15);
+  insert into orders (order_date, product_id, order_quantity, is_active) values(sysdate, 4, 15, true);
   
   CREATE TABLE stock_check_audit (
   	audit_id INT AUTO_INCREMENT PRIMARY KEY,  	

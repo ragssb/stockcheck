@@ -72,7 +72,10 @@ public class StockCheckServiceImpl implements StockCheckService {
 			s.setProductName(product.getName());
 			Inventory inventory = product.getInventory().get(0);
 			s.setBlocked(inventory.isBlocked());
-			//s.setQuantityOnOrder(inventory.get);
+			s.setQuantityOnOrder(product.getOrders().stream()
+				.filter(order -> order.isActive())
+				.mapToInt(order -> order.getOrderQuantity())
+				.sum());
 			s.setReorderLevel(inventory.getReorderLevel());
 			s.setQuantityToOrder(inventory.getReorderLevel());
 			s.setAdditionalVolumeToOrder(inventory.getReorderAdditionalVolume());
